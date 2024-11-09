@@ -1,0 +1,8 @@
+movieId,title,genres,rating,imdbId,tmdbId
+2571,"Matrix, The (1999)",Action|Sci-Fi|Thriller,5.0,133093,603.0
+6365,"Matrix Reloaded, The (2003)",Action|Adventure|Sci-Fi|Thriller|IMAX,5.0,234215,604.0
+5618,Spirited Away (Sen to Chihiro no kamikakushi) (2001),Adventure|Animation|Fantasy,5.0,245429,129.0
+6934,"Matrix Revolutions, The (2003)",Action|Adventure|Sci-Fi|Thriller|IMAX,4.5,242653,605.0
+4896,Harry Potter and the Sorcerer's Stone (a.k.a. Harry Potter and the Philosopher's Stone) (2001),Adventure|Children|Fantasy,4.0,241527,671.0
+8368,Harry Potter and the Prisoner of Azkaban (2004),Adventure|Fantasy|IMAX,4.0,304141,673.0
+78499,Toy Story 3 (2010),Adventure|Animation|Children|Comedy|Fantasy|IMAX,3.5,435761,10193.0

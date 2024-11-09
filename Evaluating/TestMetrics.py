@@ -10,11 +10,18 @@ ml = MovieLens()
 print("Loading movie ratings...")
 data = ml.loadMovieLensLatestSmall()
 
+# print('\ndata:', data)
+
 print("\nComputing movie popularity ranks so we can measure novelty later...")
 rankings = ml.getPopularityRanks()
 
+# print('rankings:', rankings)
+
 print("\nComputing item similarities so we can measure diversity later...")
 fullTrainSet = data.build_full_trainset()
+
+# print('fullTrainSet:', fullTrainSet)
+
 sim_options = {'name': 'pearson_baseline', 'user_based': False}
 simsAlgo = KNNBaseline(sim_options=sim_options)
 simsAlgo.fit(fullTrainSet)

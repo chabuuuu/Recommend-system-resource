@@ -16,6 +16,9 @@ class MovieLens:
     ratingsPath = '../ml-latest-small/ratings.csv'
     moviesPath = '../ml-latest-small/movies.csv'
     
+    # Returns: Dataset (from the Surprise library)
+    # This method loads the ratings dataset from a CSV file and maps movie IDs to names. 
+    # It returns the Surprise dataset object that can be used for building recommendation models.
     def loadMovieLensLatestSmall(self):
 
         # Look for files relative to the directory we are running from
@@ -40,6 +43,9 @@ class MovieLens:
 
         return ratingsDataset
 
+    # Returns: list of tuples (movieID, rating)
+    # This method takes a user ID and returns a list of movies they have rated, along with the ratings. 
+    # Each item in the list is a tuple of a movie ID and its corresponding rating.
     def getUserRatings(self, user):
         userRatings = []
         hitUser = False
@@ -58,6 +64,9 @@ class MovieLens:
 
         return userRatings
 
+    #     Returns: defaultdict(int)
+    # This method counts the number of ratings each movie has received, ranks them based on popularity 
+    # (most-rated movies get rank 1), and returns a defaultdict where each movie ID is mapped to its popularity rank.
     def getPopularityRanks(self):
         ratings = defaultdict(int)
         rankings = defaultdict(int)
