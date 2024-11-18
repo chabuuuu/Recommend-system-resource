@@ -11,7 +11,7 @@ import heapq
 from collections import defaultdict
 from operator import itemgetter
         
-testSubject = '85'
+testSubject = '690'
 k = 10
 
 ml = MovieLens()
@@ -32,6 +32,10 @@ testUserInnerID = trainSet.to_inner_uid(testSubject)
 # Get the top K items we rated
 testUserRatings = trainSet.ur[testUserInnerID]
 kNeighbors = heapq.nlargest(k, testUserRatings, key=lambda t: t[1])
+# kNeighbors = []
+# for rating in testUserRatings:
+#     if rating[1] > 4.0:
+#         kNeighbors.append(rating)
 
 # Get similar items to stuff we liked (weighted by rating)
 candidates = defaultdict(float)
