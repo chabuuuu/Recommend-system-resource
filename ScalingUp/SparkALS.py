@@ -40,7 +40,7 @@ if __name__ == "__main__":
 
     userRecs = model.recommendForAllUsers(10)
     
-    user85Recs = userRecs.filter(userRecs['userId'] == 85).collect()
+    user85Recs = userRecs.filter(userRecs['userId'] == 690).collect()
     
     spark.stop()
 

@@ -15,7 +15,7 @@ import csv
 
 def loadMovieNames():
     movieID_to_name = {}
-    with open("../ml-20m/movies.csv", newline='', encoding='ISO-8859-1') as csvfile:
+    with open("/home/haphuthinh/Workplace/School_project/do-an-1/Recommender-system/ml-20m/movies.csv", newline='', encoding='ISO-8859-1') as csvfile:
         movieReader = csv.reader(csvfile)
         next(movieReader)  #Skip header line
         for row in movieReader:
@@ -28,10 +28,11 @@ if __name__ == "__main__":
     spark = SparkSession\
         .builder\
         .appName("ALSExample")\
-        .config("spark.executor.cores", '4')\
+        .config("spark.driver.memory", "6g") \
+        .config("spark.executor.cores", '5')\
         .getOrCreate()
 
-    lines = spark.read.option("header", "true").csv("../ml-20m/ratings.csv").rdd
+    lines = spark.read.option("header", "true").csv("/home/haphuthinh/Workplace/School_project/do-an-1/Recommender-system/ml-20m/ratings.csv").rdd
 
     ratingsRDD = lines.map(lambda p: Row(userId=int(p[0]), movieId=int(p[1]),
                                          rating=float(p[2]), timestamp=int(p[3])))
@@ -44,6 +45,9 @@ if __name__ == "__main__":
               coldStartStrategy="drop")
     model = als.fit(training)
 
+    model.save("/home/haphuthinh/Workplace/School_project/do-an-1/Recommender-system/TrainedModel/ALSModel")
+
+
     predictions = model.transform(test)
     evaluator = RegressionEvaluator(metricName="rmse", labelCol="rating",
                                     predictionCol="prediction")
@@ -52,7 +56,7 @@ if __name__ == "__main__":
 
     userRecs = model.recommendForAllUsers(10)
     
-    user85Recs = userRecs.filter(userRecs['userId'] == 85).collect()
+    user85Recs = userRecs.filter(userRecs['userId'] == 690).collect()
     
     spark.stop()
 
